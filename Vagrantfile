@@ -31,8 +31,8 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
     config.vm.synced_folder "./", "/vagrant", type: "nfs"
 
     config.vm.provision "shell", inline: <<-SHELL
-        apt update
-        apt install -y -qq ansible git
+        apt-get update
+        apt-get install -y -qq ansible git
         ssh -T git@github.com -o StrictHostKeyChecking=no
         PYTHONUNBUFFERED=1 ansible-pull \
             --url=git@github.com:formstack/server-playbooks-devtest.git \
