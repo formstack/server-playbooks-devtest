@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-- Virtualbox > 5.1
-- Vagrant > 1.8.6
+- Virtualbox >= 5.1
+- Vagrant >= 1.8.6
 - Git
 - Root access to your local machine
 
@@ -26,3 +26,11 @@
 - Next you can simply use the `vagrant up` command to start provisioning your local environment!
 - Adding an index.php file into your repository should allow you to see its contents at http://www.testbox.dev
 - Remember part of the process is to see how you work so commit and push changes as you would on day to day projects.
+
+| Type           | Value                  |
+|----------------|------------------------|
+| MySQL Username | my_app                 |
+| Mysql Password | secret                 |
+| Mysql Database | my_app                 |
+| SSH Username   | vagrant                |
+| SSH Password   | vagrant                |
