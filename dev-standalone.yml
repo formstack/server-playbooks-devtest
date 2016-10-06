@@ -1,0 +1,11 @@
+---
+- hosts: standalone
+
+  vars_files:
+    - vars.yml
+
+  roles:
+    - core
+    - php
+    - mysql
+    - nginx

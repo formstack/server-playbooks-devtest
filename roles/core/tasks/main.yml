@@ -1,0 +1,93 @@
+---
+- name: Check if swap file exists
+  stat:
+    path: /.swap
+  register: swap_file_check
+
+- name: Create Swap file
+  become: true
+  become_user: root
+  command: fallocate -l 2G /.swap
+  when: not swap_file_check.stat.exists
+
+- name: Set Swap permissions
+  become: true
+  become_user: root
+  file:
+    path: /.swap
+    mode: 0600
+
+- name: Format Swap file
+  become: true
+  become_user: root
+  command: mkswap /.swap
+  when: not swap_file_check.stat.exists
+
+- name: Add to fstab
+  become: true
+  become_user: root
+  lineinfile:
+    dest: /etc/fstab
+    regexp: /.swap
+    line: "/.swap none swap sw 0 0"
+
+- name: Turn on Swap
+  become: true
+  become_user: root
+  command: swapon -a
+
+- name: Install packages
+  become: true
+  become_user: root
+  apt: pkg={{ item }} state=installed update_cache=yes
+  with_items:
+    # Basics
+    - build-essential
+    - zip
+    - s3cmd
+    - bundler
+    - memcached
+    - redis-server
+    - npm
+    - nodejs-legacy
+    - python-setuptools
+    - python-mysqldb
+
+    # Database
+    - mysql-server-5.7
+
+    # Web Dev
+    - nginx
+    - php-cli
+    - php-fpm
+    - php-gd
+    - php-mcrypt
+    - php-imap
+    - php-mysql
+    - php-curl
+    - php-json
+    - php-xdebug
+    - php-redis
+    - php-intl
+    - php-mbstring
+
+- name: Set correct timezone
+  copy: src=/usr/share/zoneinfo/{{ timezone }} dest=/etc/localtime owner=root group=root mode=0644
+
+- name: Update timezone
+  template: src=timezone.j2 dest=/etc/timezone
+  notify: update tzdata
+
+- name: Download composer
+  get_url: url=https://getcomposer.org/installer dest=/tmp/composer-installer.php mode=0755
+
+- name: Install composer
+  become: true
+  become_user: root
+  shell: php /tmp/composer-installer.php --install-dir=/usr/local/bin --filename=composer
+  args:
+    creates: /usr/local/bin/composer
+  tags: composer
+
+- name: PHP fpm log permissions
+  file: path=/var/log/php7.0-fpm.log state=touch mode=0644
