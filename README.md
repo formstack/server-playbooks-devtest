@@ -1,14 +1,23 @@
-# Vagrant Setup for Developers Test
-
-This will generate the config files needed to get your vagrant environment setup.
+# Formstack Developer Project Environment Setup
 
 ## Prerequisites
 
-- Virtualbox > 5.0
-- Vagrant > 1.8.3
+- Virtualbox > 5.1
+- Vagrant > 1.8.6
 - Git
 - Root access to your local machine
 
-After the Vagrant file is created you can simply use the `vagrant up` command to start provisioning your local environment!
+## Getting your Environment Setup
+- Download the `Vagrantfile` using curl.
 
-This will install the Vagrantfile you'll need and then also modify your /etc/hosts unless you specify otherwise.  All available options are listed in the table below.
+    ```
+    curl -sS https://raw.githubusercontent.com/formstack/server-playbooks-devtest/master/Vagrantfile -o Vagrantfile
+    ```
+
+After the Vagrant file is downloaded you can simply use the `vagrant up` command to start provisioning your local environment!
+
+This will install the environment you'll need.  You'll want to modify your `/etc/hosts` file to reflect the following changes:
+
+```
+192.168.59.76   testbox.dev www.testbox.dev
+```

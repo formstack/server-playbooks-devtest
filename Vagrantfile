@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-Vagrant.require_version ">= 1.8.3"
+Vagrant.require_version ">= 1.8.6"
 
 VAGRANT_API_VERSION = "2"
 GUEST_HOSTNAME = "testbox.dev"
