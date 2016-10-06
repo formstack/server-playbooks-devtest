@@ -67,6 +67,7 @@
     - php-curl
     - php-json
     - php-xdebug
+    - php-memcached
     - php-redis
     - php-intl
     - php-mbstring
