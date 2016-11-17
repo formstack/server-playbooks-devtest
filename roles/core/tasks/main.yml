@@ -71,6 +71,7 @@
     - php-redis
     - php-intl
     - php-mbstring
+    - phpunit
 
 - name: Set correct timezone
   copy: src=/usr/share/zoneinfo/{{ timezone }} dest=/etc/localtime owner=root group=root mode=0644
