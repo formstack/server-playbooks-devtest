@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Virtualbox >= 5.1
-- Vagrant >= 1.8.6
+- Vagrant >= 1.9.5
 - Git
 - Root access to your local machine
 
