@@ -3,7 +3,7 @@
 Vagrant.require_version ">= 1.8.6"
 
 VAGRANT_API_VERSION = "2"
-GUEST_HOSTNAME = "testbox.dev"
+GUEST_HOSTNAME = "testbox.test"
 GUEST_NETWORK_IP = "192.168.59.76"
 GUEST_MEMORY_LIMIT = "1024"
 GUEST_CPU_LIMIT = "1"

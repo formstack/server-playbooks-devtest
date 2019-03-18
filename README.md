@@ -20,11 +20,11 @@
 - Update your `/etc/hosts` file
 
     ```
-    echo 192.168.59.76   testbox.dev www.testbox.dev | sudo tee -a /etc/hosts
+    echo 192.168.59.76   testbox.test www.testbox.test | sudo tee -a /etc/hosts
     ```
 
 - Next you can simply use the `vagrant up` command to start provisioning your local environment!
-- Adding an index.php file into your repository should allow you to see its contents at http://www.testbox.dev
+- Adding an index.php file into your repository should allow you to see its contents at http://www.testbox.test
 - Remember part of the process is to see how you work so commit and push changes as you would on day to day projects.
 
 | Type           | Value                  |
