@@ -36,6 +36,10 @@
   become_user: root
   command: swapon -a
 
+- name: Add ppa for recent php
+  become: true
+  apt_repository: repo='ppa:ondrej/php'
+
 - name: Install packages
   become: true
   become_user: root
@@ -92,4 +96,4 @@
   tags: composer
 
 - name: PHP fpm log permissions
-  file: path=/var/log/php7.0-fpm.log state=touch mode=0644
+  file: path=/var/log/php{{ php_version }}-fpm.log state=touch mode=0644
