@@ -2,4 +2,4 @@ site_root_folder: /vagrant
 nginx_port: 80
 site_index: index.php
 timezone: America/New_York
-php_version: 7.3
+php_version: 7.4
